@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index should render SendMoneyScreen correctly 1`] = `
+<React.Fragment>
+  <form
+    className="form-container"
+  >
+    <h1>
+      Send Bitcoin
+    </h1>
+    <TextField
+      error={false}
+      id="amount"
+      label="Amount"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      value="2.4"
+    />
+    <p />
+    <TextField
+      error={false}
+      id="btcWalletAddress"
+      label="BTC Wallet Address"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+    />
+    <p />
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Send
+    </WithStyles(Button)>
+  </form>
+</React.Fragment>
+`;

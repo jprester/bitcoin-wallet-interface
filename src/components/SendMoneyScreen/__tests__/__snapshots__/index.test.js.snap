@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index should render SendMoneyScreen correctly 1`] = `
+<div
+  className="content-block vertical-divider"
+>
+  <Connect(WithStyles(SendCryptoForm)) />
+  <Connect(WithStyles(Component)) />
+  <PriceTrackerWidget />
+</div>
+`;

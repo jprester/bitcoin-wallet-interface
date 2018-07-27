@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionList should render TransactionList correctly 1`] = `
+<WithStyles(List)>
+  <WithStyles(ListItem)
+    className={Object {}}
+    dense={true}
+    disableGutters={true}
+    divider={true}
+    key="list-item1"
+  >
+    <WithStyles(ListItemText)
+      primary="1Cs4wu6pu5qCZ35bSLNVzGyEx5N6uzb"
+    />
+    <WithStyles(ListItemSecondaryAction)>
+      1.2
+       BTC
+    </WithStyles(ListItemSecondaryAction)>
+  </WithStyles(ListItem)>
+</WithStyles(List)>
+`;

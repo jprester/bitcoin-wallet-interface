@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionsListWidget should render TransactionsListWidget correctly 1`] = `
+<div>
+  <h2>
+     Transactions 
+  </h2>
+  <TransactionList
+    classes={Object {}}
+    transactionList={
+      Array [
+        Object {
+          "amount": 9,
+          "email": "email@email.com",
+          "name": "name",
+        },
+      ]
+    }
+  />
+</div>
+`;
