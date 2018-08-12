@@ -53,11 +53,11 @@ export const validateForm = (formData, btcAvailable) => {
 
 export const displayFiatValue = (btcPrice, availableFunds) => {
   if (btcPrice && availableFunds) {
-    return `${Math.floor(btcPrice * availableFunds)} + $`;
+    return `${Math.floor(btcPrice * availableFunds)} $`;
   }
 
   if (btcPrice) {
-    return `${Math.floor(btcPrice)} + $ `;
+    return `${Math.floor(btcPrice)} $ `;
   }
 
   return <span style={{ fontStyle: 'italic' }}> currently unavailable </span>;
