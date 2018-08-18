@@ -19,8 +19,15 @@ exports[`SpendingStatusWidget should render SpendingStatusWidget correctly 1`] =
       Balance in usd
     </p>
     <p>
-      NaN
-       $
+      <span
+        style={
+          Object {
+            "fontStyle": "italic",
+          }
+        }
+      >
+         currently unavailable 
+      </span>
     </p>
   </div>
 </div>

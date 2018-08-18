@@ -9,7 +9,14 @@ import Button from '@material-ui/core/Button';
 import _ from 'lodash';
 
 import { validateForm, displayFiatValue } from '../../utils/utils';
-import { setWalletAddress, setAmount, addNewTransaction, setErrors, showTransactionForm, hideTransactionForm } from '../../actions';
+import {
+  setWalletAddress,
+  setAmount,
+  addNewTransaction,
+  setErrors,
+  showTransactionForm,
+  hideTransactionForm,
+} from '../../actions';
 import styles from './_styles_SendMoneyScreen';
 
 const mobileBreakPoint = 768;
@@ -48,7 +55,7 @@ export class SendCryptoForm extends Component {
   handleSendButtonClick() {
     const newTransactionData = {
       address: this.props.transactionWalletAddress,
-      amount: parseFloat(this.props.transactionAmount, 0),
+      amount: parseFloat(this.props.transactionAmount, 10),
     };
 
     const checkForm = validateForm(newTransactionData, this.props.btcAvailable);
@@ -64,7 +71,7 @@ export class SendCryptoForm extends Component {
   resetForm() {
     this.props.setErrors({});
     this.props.setWalletAddress('');
-    this.props.setAmount();
+    this.props.setAmount('');
   }
 
   // Render methods
@@ -88,12 +95,14 @@ export class SendCryptoForm extends Component {
               underline: classes.cssUnderline,
             }}
             onChange={this.handleWalletAddressInput}
-            value={this.props.walletAddress}
+            value={this.props.transactionWalletAddress}
             className={`${classes.textInput} ${classes.addressField}`}
             error={!!this.props.walletAddressFieldError}
             id="custom-css-input"
           />
-          <p className={classes.errorMessage}>{this.props.walletAddressFieldError}</p>
+          <p className={classes.errorMessage}>
+            {this.props.walletAddressFieldError}
+          </p>
         </FormControl>
 
         <FormControl className={classes.inputControl}>
@@ -113,7 +122,7 @@ export class SendCryptoForm extends Component {
             }}
             className={`${classes.textInput} ${classes.amountField}`}
             onChange={this.handleAmountInput}
-            value={this.props.amount}
+            value={this.props.transactionAmount}
             error={!!this.props.amountFieldError}
             id="custom-css-input"
           />
@@ -124,15 +133,33 @@ export class SendCryptoForm extends Component {
   }
 
   renderMobileButtons(classes) {
-    if (window.innerWidth < mobileBreakPoint && !this.props.formVisibleOnMobile) {
+    if (
+      window.innerWidth < mobileBreakPoint &&
+      !this.props.formVisibleOnMobile
+    ) {
       return (
-        <Button variant="outlined" size="medium" color="primary" classes={classes.buttonStyles} onClick={this.handleShowTransactionFormClick}>
-        + New Transaction
+        <Button
+          variant="outlined"
+          size="medium"
+          color="primary"
+          classes={classes.buttonStyles}
+          onClick={this.handleShowTransactionFormClick}
+        >
+          + New Transaction
         </Button>
       );
-    } else if (window.innerWidth < mobileBreakPoint && this.props.formVisibleOnMobile) {
+    } else if (
+      window.innerWidth < mobileBreakPoint &&
+      this.props.formVisibleOnMobile
+    ) {
       return (
-        <Button variant="outlined" size="medium" color="primary" classes={classes.buttonStyles} onClick={this.handleHideTransactionFormClick}>
+        <Button
+          variant="outlined"
+          size="medium"
+          color="primary"
+          classes={classes.buttonStyles}
+          onClick={this.handleHideTransactionFormClick}
+        >
           Cancel
         </Button>
       );
@@ -148,24 +175,34 @@ export class SendCryptoForm extends Component {
       <Fragment>
         {this.renderMobileButtons(classes)}
 
-        {(this.props.formVisibleOnMobile || window.innerWidth > mobileBreakPoint) &&
-        <form className={classes.formContainer}>
-          <h2 className={classes.formHeader}>Send Bitcoin</h2>
+        {(this.props.formVisibleOnMobile ||
+          window.innerWidth > mobileBreakPoint) && (
+          <form className={classes.formContainer}>
+            <h2 className={classes.formHeader}>Send Bitcoin</h2>
 
-          {this.customizedInputs(classes)}
+            {this.customizedInputs(classes)}
 
-          <div className={classes.formFooter}>
-            <p className={classes.transactionValueLabel}>
-              Transaction value in USD:
-              <span className={classes.transactionNumber}>
-                {displayFiatValue(this.props.btcPrice, this.props.btcAvailable)}
-              </span>
-            </p>
-            <Button variant="contained" color="primary" className={classes.button} onClick={this.handleSendButtonClick}>
-              Send
-            </Button>
-          </div>
-        </form> }
+            <div className={classes.formFooter}>
+              <p className={classes.transactionValueLabel}>
+                Transaction value in USD:
+                <span className={classes.transactionNumber}>
+                  {displayFiatValue(
+                    this.props.btcPrice,
+                    this.props.btcAvailable,
+                  )}
+                </span>
+              </p>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.handleSendButtonClick}
+              >
+                Send
+              </Button>
+            </div>
+          </form>
+        )}
       </Fragment>
     );
   }
@@ -184,7 +221,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setWalletAddress: address => dispatch(setWalletAddress(address)),
   setAmount: amount => dispatch(setAmount(amount)),
-  addNewTransaction: transactionData => dispatch(addNewTransaction(transactionData)),
+  addNewTransaction: transactionData =>
+    dispatch(addNewTransaction(transactionData)),
   setErrors: checkForm => dispatch(setErrors(checkForm)),
   showTransactionForm: () => dispatch(showTransactionForm()),
   hideTransactionForm: () => dispatch(hideTransactionForm()),
@@ -192,7 +230,10 @@ const mapDispatchToProps = dispatch => ({
 
 const styledComponent = withStyles(styles)(SendCryptoForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(styledComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(styledComponent);
 
 SendCryptoForm.propTypes = {
   transactionAmount: PropTypes.string,
@@ -211,4 +252,3 @@ SendCryptoForm.defaultProps = {
   walletAddressFieldError: '',
   amountFieldError: '',
 };
-

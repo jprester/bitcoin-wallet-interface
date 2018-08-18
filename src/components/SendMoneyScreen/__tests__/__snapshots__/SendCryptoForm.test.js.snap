@@ -2,40 +2,86 @@
 
 exports[`index should render SendMoneyScreen correctly 1`] = `
 <React.Fragment>
-  <form
-    className="form-container"
-  >
-    <h1>
+  <form>
+    <h2>
       Send Bitcoin
-    </h1>
-    <TextField
-      error={false}
-      id="amount"
-      label="Amount"
-      margin="normal"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      value="2.4"
-    />
-    <p />
-    <TextField
-      error={false}
-      id="btcWalletAddress"
-      label="BTC Wallet Address"
-      margin="normal"
-      onChange={[Function]}
-      required={false}
-      select={false}
-    />
-    <p />
-    <WithStyles(Button)
-      color="primary"
-      onClick={[Function]}
-      variant="contained"
-    >
-      Send
-    </WithStyles(Button)>
+    </h2>
+    <div>
+      <WithStyles(FormControl)>
+        <WithStyles(InputLabel)
+          FormLabelClasses={
+            Object {
+              "focused": undefined,
+              "root": undefined,
+            }
+          }
+          htmlFor="custom-css-input"
+        >
+          BTC wallet address
+        </WithStyles(InputLabel)>
+        <WithStyles(Input)
+          className="undefined undefined"
+          classes={
+            Object {
+              "underline": undefined,
+            }
+          }
+          error={false}
+          id="custom-css-input"
+          onChange={[Function]}
+        />
+        <p />
+      </WithStyles(FormControl)>
+      <WithStyles(FormControl)>
+        <WithStyles(InputLabel)
+          FormLabelClasses={
+            Object {
+              "focused": undefined,
+              "root": undefined,
+            }
+          }
+          htmlFor="custom-css-input"
+        >
+          BTC amount
+        </WithStyles(InputLabel)>
+        <WithStyles(Input)
+          className="undefined undefined"
+          classes={
+            Object {
+              "underline": undefined,
+            }
+          }
+          error={false}
+          id="custom-css-input"
+          onChange={[Function]}
+          value="2.4"
+        />
+        <p />
+      </WithStyles(FormControl)>
+    </div>
+    <div>
+      <p>
+        Transaction value in USD:
+        <span>
+          <span
+            style={
+              Object {
+                "fontStyle": "italic",
+              }
+            }
+          >
+             currently unavailable 
+          </span>
+        </span>
+      </p>
+      <WithStyles(Button)
+        color="primary"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Send
+      </WithStyles(Button)>
+    </div>
   </form>
 </React.Fragment>
 `;

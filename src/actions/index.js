@@ -1,5 +1,14 @@
 import getCryptoValue from '../services/apiServices';
-import { FETCH_TRANSACTIONS, ADD_NEW_TRANSACTION, SET_WALLET_ADDRESS, SET_AMOUNT, SET_ERRORS, SHOW_TRANSACTION_FORM, HIDE_TRANSACTION_FORM, GET_CRYPTO_PRICE } from './types';
+import {
+  FETCH_TRANSACTIONS,
+  ADD_NEW_TRANSACTION,
+  SET_WALLET_ADDRESS,
+  SET_AMOUNT,
+  SET_ERRORS,
+  SHOW_TRANSACTION_FORM,
+  HIDE_TRANSACTION_FORM,
+  GET_CRYPTO_PRICE,
+} from './types';
 
 export const loadTransactions = () => ({
   type: FETCH_TRANSACTIONS,
@@ -38,11 +47,11 @@ export const getCryptoPrice = response => ({
   payload: response,
 });
 
-export const startCoinFetch = () => dispatch => getCryptoValue('BTC', 'USD')
-  .then((response) => {
-    dispatch(getCryptoPrice(response));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
+export const startCoinFetch = () => dispatch =>
+  getCryptoValue('BTC', 'USD')
+    .then((response) => {
+      dispatch(getCryptoPrice(response));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
