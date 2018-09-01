@@ -2,7 +2,7 @@
 
 exports[`index should render MyAccountScreen correctly 1`] = `
 <div
-  className="content-block block-size-1-2"
+  className="content-block"
 >
   <Connect(WithStyles(Component)) />
 </div>

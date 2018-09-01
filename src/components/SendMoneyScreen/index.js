@@ -13,7 +13,7 @@ export class SendMoneyScreen extends Component {
 
   render() {
     return (
-      <div className="content-block">
+      <div className="content-block block-size-1-2">
         <SendCryptoFormMain />
         <SpendingStatusWidgetMain />
         <PriceTrackerWidget btcPrice={this.props.btcPrice} />
