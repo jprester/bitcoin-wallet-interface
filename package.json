@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.2.3",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "node-fetch": "^2.1.2",
     "prop-types": "^15.6.2",
     "radium": "^0.24.1",
